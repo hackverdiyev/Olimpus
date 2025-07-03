@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olimpus | Qeydiyyat</title>
+  <link rel="stylesheet" href="/static/css/forms.css">
+  <link rel="shortcut icon" href="/static/images/logo2.png" type="image/x-icon">
+</head>
+<body>
+  {% include 'navbar.html' %}
+  <form method="post">
+    {% csrf_token %}
+    <div class="place">
+      <img src="/static/images/logo2.png" style="height: 50px;" alt="Logo">
+      <p class="Title">Qeydiyyat</p>
+      <div class="input_data">
+        <input name="fullname" type="text" placeholder="Ad və soyad (İstəyə bağlı)"><br>
+        <input name="username" type="text" placeholder="İstifadəçi adı"><br>
+        <input name="email" type="email" placeholder="E-poçt"><br>
+        <input name="password" type="password" placeholder="Şifrə"><br>
+        <input name="password_repeat" type="password" placeholder="Şifrənin təkrarı"><br>
+        {% if error == 1 %}
+        <br><p class="error">Username artıq istfadədədir.</p>
+        {% elif error == 2 %}
+        <br><p class="error">Username 4-20 simvol uzunluğunda olmalıdır.</p>
+        {% elif error == 3 %}
+        <br><p class="error">Username daxilində sadəcə ingilis hərfləri, rəqəmlər,<br> nöqtə və altdan xətt ola bilər.</p>
+        {% elif error == 4 %}
+        <br><p class="error">Username daxilində ən az 1 hərf olmalıdır.</p>
+        {% elif error == 5 %}
+        <br><p class="error">Email artıq istifadədədir.</p>
+        {% elif error == 6 %}
+        <br><p class="error">Email düzgün deyil.</p>
+        {% elif error == 7 %}
+        <br><p class="error">Password'lar uyğunlaşmır.</p>
+        {% elif error == 8 %}
+        <br><p class="error">Password 8-50 simvol uzunluğunda olmalıdır.</p>
+        {% elif error == 9 %}
+        <br><p class="error">Password daxilində sadəcə ingilis hərfləri,<br> rəqəmlər, nöqtə və altdan xətt ola bilər.</p>
+        {% elif error == 10 %}
+        <br><p class="error">Password daxilində ən az 1 böyük hərf,<br> 1 kiçik hərf və 1 rəqəm olmalıdır.</p>
+        {% endif %}
+      </div>
+      <button class="sumbit" type="submit">Təsdiq et</button>
+      <p class="go_opposite">Hesabınız var? <a href="{% url 'login' %}">Daxil olun.</a></p>
+    </div>
+  </form>
+</body>
+</html>

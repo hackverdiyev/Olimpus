@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpus | Xəbərlər</title>
+    <link rel="stylesheet" href="/static/css/news.css">
+    <link rel="shortcut icon" href="/static/images/logo2.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://css.gg/css?=|comment|eye-alt|eye" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="news_all_container">
+        <h1 class="head_news_cont">Xəbərlər</h1>
+        <div class="news_all">
+            {% for content in news %}
+            <a href="{% url 'news_view' content.id %}" class="news_container_go">
+            <div class="news">
+                <img src="{{ content.poster.url }}">
+                <div class="texts_about_news">
+                    <h2 class="heading_of_news">{{ content.heading }}</h2>
+                    <div class="text_date_view">
+                        <p class="news_date">Tarix: {{ content.date }}</p>
+                        <p class="views_of_news">Baxış sayı: {{ content.views }}</p>
+                    </div>
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+<script src="/static/js/news.js"></script>
+</html>

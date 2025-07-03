@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body{
+    background: #c6c3c3;
+}
+.news_container_all{
+    width: 80%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+
+.news_container{
+    width: 98%;
+    padding: 20px;
+    background-color: #6f6fcb;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.news_container_children{
+    background-color: white;
+    padding-bottom: 20px;
+    border-radius: 10px;
+}
+
+.news_poster_view{
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.news_heading_view{
+    color: #4a4abd;
+    padding: 10px;
+    padding-left: 20px;
+    padding-top: 15px;
+    font-weight: 600;
+}
+
+.text_date_view{
+    display: flex;
+}
+
+.date_added_view{
+    color: grey;
+    font-size: 17px;
+    font-weight: 600;
+    padding-top: 6px;
+    padding-left: 20px;
+    width: 87%;
+}
+
+.views_of_news{
+    color: grey;
+    font-size: 17px;
+    font-weight: 600;
+    padding-top: 6px;
+}
+
+.news_context_view{
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    color: #2d2d3f;
+}
+
+.news_source_view{
+    color: grey;
+    font-size: 17px;
+    font-weight: 500;
+    padding-top: 15px;
+    padding-left: 20px;
+    text-align: center;
+}
+
+@media (max-width: 1192px){
+    .news_container_all{
+        width: 90%;
+        margin-top: 160px;
+    }
+    .date_added_view{
+        width: 80%;
+    }
+}
+
+@media (max-width: 739px){
+    .news_container_all{
+        width: 98%;
+        margin-top: 170px;
+    }
+    .date_added_view{
+        width: 60%;
+    }
+}
+
+@media(max-width:692px){
+    .text_date_view{
+        display: block;
+    }
+    .date_added_view{
+        width: auto;
+    }
+    .views_of_news{
+        padding-left: 20px;
+    }
+}

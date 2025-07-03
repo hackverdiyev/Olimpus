@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpus | {{news.heading}}</title>
+    <link rel="stylesheet" href="/static/css/news_view.css">
+    <link rel="shortcut icon" href="/static/images/logo2.png" type="image/x-icon">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="news_container_all">
+        <div class="news_container">
+            <div class="news_container_children">
+                <img src="{{ news.poster.url }}" class="news_poster_view">
+                <div class="text_date_view">
+                    <p class="date_added_view">Tarix: {{news.date}}</p>
+                    <p class="views_of_news">Baxış sayı: {{news.views}}</p>
+                </div>
+                <h2 class="news_heading_view">{{ news.heading }}</h2>
+                <p class="news_context_view">
+                    {% load tags %}
+                    {% for url,new in context.items %}
+                    {{ new }}
+                    <a href="{{ urls|index:url }}">{{ urls|index:url }}</a>
+                    {% endfor %}
+                </p>
+                <p class="news_source_view">Mənbə: {{news.source}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

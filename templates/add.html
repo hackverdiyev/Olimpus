@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olimpus | Əlavə et</title>
+    <link rel="stylesheet" href="/static/css/add.css">
+    <link rel="shortcut icon" href="/static/images/logo2.png" type="image/x-icon">
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="add_preferences">
+        {% if type == 'problem' %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="add_problem">
+                <p class="label_problem">Məsələnin adı və ya mənbəsi:</p>
+                <input type="text" class="source_problem" name="source_problem" required>
+                <p class="label_problem">Fənn:</p>
+                <select name="problem_subject" id="problem_subject_selected" required>
+                    <option value="">None</option>
+                    {% for key,value in subjects.items %}
+                    <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+                <p style="color: red; padding-top: 5px;">Aşağıdakı sahələrdən sadəcə birini doldurmağınız kifayətdir.</p>
+                <div class="images_problem">
+                    <p class="label_problem">Məsələnin şəkli:</p><br>
+                    <input type="file" id="problem_images" accept="image/png, image/jpeg, image/jpg" name="photo" multiple/>
+                    <label for="problem_images" class="choose_img">Şəkili seçin</label><br>
+                    <div class="image_pp_pre">
+                        <img src="#" class="uploaded_img_preview">
+                    </div><br>
+                </div>
+                <p class="label_problem">Məsələnin şərti:</p>
+                <textarea name="text_of_problem" id="text_of_problem" cols="100" rows="10"></textarea>
+                <p class="label_problem">Məsələnin tipi:</p>
+                <div class="buttons_of_type">   
+                    <input type="checkbox" id="private" name="private">
+                    <label class="type_of_problem" for="private">Özəl məsələ<span class="attention_type">(Özəl məsələyə sadəcə linkini paylaşdığınız və ya məsələni əlavə etdiyiniz qrupdakı istifadəçilər baxa bilərlər.)</span></label>
+                </div>
+                <p class="information_about_verify">Etibarlılıq məqsədi ilə əlavə edilən məsələlər admin və ya müəllimlər tərəfindən təsdiqləndiqdən sonra sayta yerləşdiriləcəkdir.<br>Bu qayda #Clever və #Teacher tag-lərinə şamil edilmir.</p>
+                <button type="submit" class="submit_form" name="with_solution">Həll İlə Əlavə et</button>
+                <button type="submit" class="submit_form" name="without_solution">Həllsiz Əlavə Et</button>
+            </div>
+        </form>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const input = document.getElementById("problem_images");
+                const image = document.getElementsByClassName("uploaded_img_preview")[0];
+                const image_div = document.getElementsByClassName("image_pp_pre")[0];
+
+                input.addEventListener("change", function () {
+                    const input_file = input.files[0];
+                    if (input_file) {
+                        const reader = new FileReader();
+                    
+                        reader.onload = function (event) {
+                            image.src = event.target.result;
+                            image_div.style.display = "block";
+                        }
+                    
+                        reader.readAsDataURL(input_file);
+                    } else {
+                        image.src = "#";
+                        image_div.style.display = "none";
+                    }
+                });
+            });
+        </script>
+        {% elif type == 'solution' %}
+        <form method="post" class="add_solution" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p style="color: red; padding-top: 10px; font-weight: 600;">Aşağıdakı sahələrdən sadəcə birini doldurmağınız kifayətdir.</p>
+            <p class="label_solution">Həllin videosu:</p>
+            <input type="file" id="solution_video" name="sol_video" accept="video/mp4, video/webm, image/mkv, image/avi"/>
+            <label class="solution_video" for="solution_video">Videonu seçin</label>
+            <div class="video_pp_pre">
+                <video width="100%" class="uploaded_video_preview" controls="controls">
+                    <source src="#" type="video/mp4" />
+                </video>
+            </div>
+            <p class="label_solution">Həllin şəkili:</p>
+            <input type="file" id="solution_images" name="sol_imgs" accept="image/png, image/jpeg, image/jpg" multiple/>
+            <label for="solution_images" class="solution_images">Şəkilləri seçin</label>
+            <div class="image_pp_pre_sol">
+                <img src="#" class="uploaded_img_preview_sol">
+            </div>
+            <p class="label_solution">Həllin yazısı:</p>
+            <textarea name="text_of_solution" id="text_of_solution" cols="100" rows="10"></textarea><br>
+            <p class="information_about_verify">Etibarlılıq məqsədi ilə göndərilən həllər admin və ya müəllimlər tərəfindən təsdiqləndiqdən sonra sayta yerləşdiriləcəkdir.<br>Bu qayda #Clever və #Teacher tag-lərinə şamil edilmir.</p>
+            <button type="submit" class="submit_form">Təsdiqlə</button>
+        </form>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const input = document.getElementById("solution_images");
+                const image = document.getElementsByClassName("uploaded_img_preview_sol")[0];
+                const image_div = document.getElementsByClassName("image_pp_pre_sol")[0];
+            
+                input.addEventListener("change", function () {
+                    const input_file = input.files[0];
+                    if (input_file) {
+                        const reader = new FileReader();
+                    
+                        reader.onload = function (event) {
+                            image.src = event.target.result;
+                            image_div.style.display = "block";
+                        }
+                    
+                        reader.readAsDataURL(input_file);
+                    } else {
+                        image.src = "#";
+                        image_div.style.display = "none";
+                    }
+                });
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const input = document.getElementById("solution_video");
+                const video = document.getElementsByClassName("uploaded_video_preview")[0];
+                const video_div = document.getElementsByClassName("video_pp_pre")[0];
+            
+                input.addEventListener("change", function () {
+                    const file = input.files[0];
+                    console.log(file);
+                    if (file) {
+                        const reader = new FileReader();
+                    
+                        reader.onload = function (event) {
+                            video.src = event.target.result;
+                            video_div.style.display = "block";
+                        }
+                    
+                        reader.readAsDataURL(file);
+                    } else {
+                        video.src = "#";
+                        video_div.style.display = "none";
+                    }
+                });
+            });            
+        </script>
+        {% endif %}
+    </div>
+</body>
+</html>

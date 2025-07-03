@@ -1,0 +1,100 @@
+<header>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/navbar.css">
+    <a href="{% url 'base' %}" class="logo"><img width="100" class="logo_href" src="/static/images/logo.png" alt="Logo"></a>
+    <div class="navbar-all-elements">
+        <ul class="navlist">
+            <li><button class="dropbtn"><a href="{% url 'base' %}">Əsas səhifə</a></button></li>
+            <li>
+            <div class="dropdown">
+                <div class="buttons_drop">
+                    <button class="dropbtn" id="dropbtn_prob"><a href="{% url 'problems_main' %}">Məsələlər</a><button class="icon_opening"><i class="bi bi-chevron-down" id="problem_nav_feature_icon"></i></button></button>
+                </div>
+                <div class="dropdown-content">
+                    {% for key,value in subjects.items %}
+                    <a href="{% url 'problems' key %}">{{ value }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+            </li>
+            <li id="group_not"><button class="dropbtn"><a href="{% url 'groups_main' %}">Qruplar</button></a>{% if islogin.requests|length > 1 %}<p class="notify_group">New</p>{% endif %}</li>
+            <li><button class="dropbtn"><a href="{% url 'ranking' %}">Reytinq cədvəli</a></button></li>
+            <li><button class="dropbtn"><a href="{% url 'news' %}">Xəbərlər</a></button></li>
+            <li><button class="dropbtn"><a href="{% url 'contact' %}">Əlaqə</a></button></li>
+        </ul>
+        {% if islogin == False %}
+        <div class="forms-all">
+            <div class="users-section">
+                <a href="{% url 'login' %}"><button class="login">Daxil ol</button></a>
+                <a href="{% url 'register' %}"><button class="register">Qeydiyyat</button></a>
+            </div>
+        </div>
+        {% else %}
+        <div class="pp_all">
+            <div class="profile-section">
+                <div class="notificatons_whole">
+                    <button class="notification_btn" onclick="open_notifications()"><i class="bi bi-bell-fill"></i></button>
+                    <div class="notification_div">
+                        <div class="notifications">
+                            {% if notifications %}
+                            {% for notification in notifications %}
+                            {% if notification.type == 1 %}
+                            <a href="{% url 'versions' notification.content %}">
+                                <div class="notification">
+                                    <button class="notification_type_icn"><i class="bi bi-file-earmark-arrow-up-fill"></i></button>
+                                    <div class="notification_texts">
+                                        <p class="notification_update">Update {{notification.content}}</p>
+                                        <p class="notification_update_cont">Ətraflı məlumat üçün -></p>
+                                    </div>
+                                </div>
+                            </a>
+                            {% elif notification.type == 2 %}
+                            <a href="{% url 'groups_main' %}">
+                                <div class="notification">
+                                    <button class="notification_type_icn"><i class="bi bi-list-check"></i></button>
+                                    <div class="notification_texts">
+                                        <p class="notification_update">"{{notification.content}}" adlı qrupa dəvət edilmisiniz!</p>
+                                    </div>
+                                </div>
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                            {% else %}
+                            <p class="no_notification">Bildiriş yoxdur</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <a href="{% url 'profile' islogin.username %}" class="pp_place"><img class="profile_photo" src="/media/{{ islogin.profile_photo }}"></i></a>
+                <div class="user">
+                    <h3 class="username_txt"><a href="{% url 'profile' islogin.username %}" style="text-decoration:none; color:white;">{{ islogin.username }}</a></h3>
+                    {% if islogin.admin_tag %}
+                    <h6 class="user_tag">Admin</h6>
+                    {% elif islogin.teacher_tag %}
+                    <h6 class="user_tag">Teacher</h6>
+                    {% elif islogin.clever_tag %}
+                    <h6 class="user_tag">Clever</h6>
+                    {% elif islogin.olympian_tag %}
+                    <h6 class="user_tag">Olympian</h6>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="bx bx-menu" id="menu-icon"></div>
+</header>
+<div class="head-bottom">
+</div>
+<script src="/static/js/navbar.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5774840672525859" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCCR9GZBD9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QCCR9GZBD9');
+</script>

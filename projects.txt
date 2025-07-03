@@ -1,0 +1,29 @@
+Updates
+1. Notification functions - back
+2. Public and private functions - back
+3. Contestlərə məsələ əlavə etmək üçün axtarış divi - front, back
+4. Silinmə və dəyişmənin əlavə olunması - front, back
+5. Məsələlər səhifəsi filter button
+6?. Update səhifəsinin qurulması (Updateler haqqında melumat verilen) - front, back
+7?. Show problem false olduqda chatin görünməməsi - back
+8?. Group Sağ Alt PP problemi - back
+9?. SQL - back
+
+Bugs
+1!. base last 10 problems - back
+2!. redirect from add page - back
+3. Base önə çıxanlar
+4. Əlyazılı həllərin silinməsi
+5. Group name - front
+6?. delete news_view.html - back
+
+
+! öncəlik verilməli olan
+? tamamlanmamış idea
+
+
+
+
+1.2.0
+Ana səhifə dizaynı - əsas səhifədə ən çox baxış almış və həll edilə bilməmiş 3 məsələ gürünür və bu məsələlər 3 yox, 5 bal qazandırır.
+Bildirişlər - artıq update gəldikdə və ya qrupa dəvət olunduğunuzda daha tez məlumatınız olacaq!

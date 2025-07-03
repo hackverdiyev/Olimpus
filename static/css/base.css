@@ -1,0 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body{
+    background: #c6c3c3;
+}
+
+.base_news_all{
+    width:100%;
+    background-color: rgb(230, 230, 230);
+    padding-top: 130px;
+    padding-bottom:50px;
+}
+
+.head_week_prob{
+    color: #4a4abd;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.problems_of_week{
+    width: 80%;
+    border-radius: 20px;
+    height: auto;
+    margin: 0 auto; 
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.problem_of_week{
+    border-radius: 10px;
+    width: 25%;
+    border: 1px solid #4a4abd;
+    height: 300px;
+    box-shadow: 2px 6px 6px 2px rgba(169, 169, 169, 0.562);
+}
+
+.problem_of_week:nth-child(odd){
+    margin-top: 50px;
+}
+
+.problem_of_week:nth-child(1){
+    margin-right: 90px;
+}
+
+.problem_of_week:nth-child(3){
+    margin-left: 90px;
+}
+
+.problem_of_week_head{
+    width: 100%;
+    background-color: #4a4abd;
+    color: white;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    padding: 10px;
+    height: 50px;
+}
+
+.head_problem_week{
+    text-align: center;
+    font-weight: 600;
+    font-size:17px;
+}
+
+.main_problem_week{
+    color: #4a4abd;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px;
+    text-align: center;
+    padding-top: 35px;
+    height: 200px;
+}
+
+.foot_go_prob{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.foot_problem_week{
+    width: 100%;
+    background-color: rgb(0, 136, 32);
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.base_lately_added{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.base_lately_added table{
+    border-collapse: collapse;
+    margin: auto;
+    width: 80%;
+    border-radius: 1em;
+    overflow: hidden;
+    box-shadow: 5px 16px 16px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+table tbody{
+    background-color: rgb(255, 255, 255);
+}
+
+table thead tr th{
+    padding: 20px;
+    background-color: #4a4abd;
+    color: white;
+    text-align: center;
+}
+
+table tbody tr{
+    border-bottom: solid rgba(206, 197, 197, 0.708) 1px;
+    transition: 1s ease;
+}
+
+table tbody tr:last-child{
+    border-bottom: 0;
+}
+table tbody tr td{
+    padding: 20px;
+}
+
+table tbody tr .problem_text{
+    padding: 0;
+}
+
+table tbody tr .problem_text a{
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+table tbody tr .number{
+    background-color:#4a4abd;
+}
+table tr td:first-child{
+    text-align: center;
+    border-bottom: 0;
+}
+
+table tbody tr .number p{
+    font-weight: 700;
+    color: white;
+    background-color:#4a4abd;
+}
+
+table tbody tr td .go_problem{
+    display: block; 
+    padding: 10px 0 10px 70px;
+    background-color: rgba(255, 255, 255, 0);
+    color: #4a4abd;
+    border: 0;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+table tbody tr:hover{
+    background-color: rgba(30, 29, 29, 0.185)
+}
+
+table tbody tr td .view_problem{
+    color: #4a4abd;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+#view_div{
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.653);
+    z-index: 1000000;
+    display: none;
+    overflow-y: auto; 
+}
+
+#view_div .problem_summary{
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 20px;
+    padding: 50px;
+    padding-bottom: 20px;
+    padding-top: 15px;
+}
+
+
+
+#view_div .problem_summary .head_pr .close_viewpage{
+    margin: 0;
+    border:0;
+    font-size: 35px;
+    float: right;
+    background-color: transparent;
+    color: rgb(165, 165, 165);
+    text-align: center;
+    cursor: pointer;
+}
+
+#view_div .problem_summary h1{
+    color: #4a4abd;
+    margin-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+}
+
+#view_div .problem_summary img{
+    margin: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+#view_div .problem_summary .problem_context{
+    padding: 30px;
+}
+
+#view_div .problem_summary p:last-child{
+    text-align: center;
+    margin-top: 20px;
+    color:rgba(0, 0, 0, 0.393);
+    font-size: 17x;
+    font-weight: 500;
+}
+
+
+footer{
+    height: 100px;
+    width: 100%;
+    background-color: #4a4abd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+footer p{
+    color: white;
+    text-align: center;
+}
+
+@media (max-width: 548px){
+    .base_news_all{
+        padding-top: 140px;
+    }
+    .news_next_slide{
+        margin-left: -56px;
+        z-index: 99;
+        margin-top: 13%;
+        width: 40px;
+        height: 40px;
+    }
+    .news_prev_slide{
+        margin-right: -56px;
+        z-index: 99;
+        margin-top: 13%;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 824px){
+    .base_our_offers{
+        display: block;
+    }
+    .base_our_offer{
+        width: 100%;
+    }
+}
+
+@media (max-width: 668px){
+    table tbody tr td .go_problem{
+        padding: 10px 0 10px 10px;
+    }
+}
